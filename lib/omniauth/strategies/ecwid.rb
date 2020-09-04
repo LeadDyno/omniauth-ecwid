@@ -18,6 +18,12 @@ module OmniAuth
       uid {
         access_token.params.fetch("store_id")
       }
+
+      # ecwid doesnt like it when the query params are also passed
+      def callback_url
+        full_host + script_name + callback_path
+      end
+
     end
   end
 end
